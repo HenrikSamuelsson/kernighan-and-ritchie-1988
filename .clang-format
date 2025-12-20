@@ -1,0 +1,12 @@
+BasedOnStyle: LLVM
+
+# Line width
+ColumnLimit: 72
+
+# Brace style (Allman)
+BreakBeforeBraces: Allman
+
+# Indentation
+IndentWidth: 4
+ContinuationIndentWidth: 4
+UseTab: Never
