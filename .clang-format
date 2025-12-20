@@ -10,3 +10,9 @@ BreakBeforeBraces: Allman
 IndentWidth: 4
 ContinuationIndentWidth: 4
 UseTab: Never
+
+# Vertical Orientation
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Never
