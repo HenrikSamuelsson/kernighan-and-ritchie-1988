@@ -14,8 +14,6 @@ There is an example program in the book but I implemented my own version of the 
 
 <https://github.com/HenrikSamuelsson/kernighan-and-ritchie-1988/blob/46923bee0f96c26223326544df26b576ef843317/exercises/chapter_01/exercise_01/main.c#L1-L8>
 
-<https://github.com/HenrikSamuelsson/kernighan-1988/blob/341826cd90f2e38919eca30daa5f574c12a150ed/exercises/chapter_01/exercise_01/main_missing_semicolon.c#L1-L9>
-
 ## Answer
 
 ## References
