@@ -12,7 +12,29 @@ compiler diagnostics.
 
 There is an example program in the book but I implemented my own version of the program, using a slightly more modern style than the example shown in the book.
 
+### Functional Version
+
 <https://github.com/HenrikSamuelsson/kernighan-and-ritchie-1988/blob/46923bee0f96c26223326544df26b576ef843317/exercises/chapter_01/exercise_01/main.c#L1-L8>
+
+This version compiles and runs as expected.
+
+```powershell
+> gcc -std=c11 -Wall -Wextra -Wpedantic main.c
+PS C:\dev\kernighan-and-ritchie-1988\exercises\chapter_01\exercise_01> ./a.exe
+Hello, world!
+```
+
+### Missing Semicolon
+
+<https://github.com/HenrikSamuelsson/kernighan-1988/blob/a9001e8f8c7c923d709ad54e61e5bedc08ba540f/exercises/chapter_01/exercise_01/main_missing_semicolon.c#L1-L8>
+
+```powershell
+> gcc -std=c11 -Wall -Wextra -Wpedantic .\main_missing_semicolon.c
+.\main_missing_semicolon.c: In function 'main':
+.\main_missing_semicolon.c:8:1: error: expected ';' before '}' token
+    8 | }
+      | ^
+```
 
 ## Answer
 
