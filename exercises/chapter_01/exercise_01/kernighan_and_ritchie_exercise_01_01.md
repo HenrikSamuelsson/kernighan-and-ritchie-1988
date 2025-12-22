@@ -16,7 +16,7 @@ There is an example program in the book but I implemented my own version of the 
 
 This version compiles and runs as expected.
 
-<https://github.com/HenrikSamuelsson/kernighan-and-ritchie-1988/blob/15717d7a575c2a5657165b798082dc7385980e97/exercises/chapter_01/exercise_01/main.c#L1-L8>
+<https://github.com/HenrikSamuelsson/kernighan-and-ritchie-1988/blob/ec1e313902b5303929351a99f11583ecbf938f28/exercises/chapter_01/exercise_01/main.c#L1-L8>
 
 ```powershell
 > gcc -std=c11 -Wall -Wextra -Wpedantic main.c
@@ -28,7 +28,7 @@ Hello, world!
 
 Intentionally left out the line `#include <stdio.h>` to see what error messages this causes when compiling.
 
-<https://github.com/HenrikSamuelsson/kernighan-and-ritchie-1988/blob/82f9da9980ea69cf390586dc3eb3ffd7b4657790/exercises/chapter_01/exercise_01/main_missing_include.c#L1-L7>
+<https://github.com/HenrikSamuelsson/kernighan-and-ritchie-1988/blob/ec1e313902b5303929351a99f11583ecbf938f28/exercises/chapter_01/exercise_01/main_missing_include.c#L1-L7>
 
 ```powershell
 > gcc -std=c11 -Wall -Wextra -Wpedantic .\main_missing_include.c 
@@ -50,7 +50,7 @@ Intentionally left out the line `#include <stdio.h>` to see what error messages 
 
 Intentionally left out a semicolon to see what error messages this causes when compiling.
 
-<https://github.com/HenrikSamuelsson/kernighan-and-ritchie-1988/blob/d217fa057e18fa36969fdc8c02687803b5231fdb/exercises/chapter_01/exercise_01/main_missing_semicolon.c#L1-L8>
+<https://github.com/HenrikSamuelsson/kernighan-and-ritchie-1988/blob/ec1e313902b5303929351a99f11583ecbf938f28/exercises/chapter_01/exercise_01/main_missing_semicolon.c#L1-L8>
 
 ```powershell
 > gcc -std=c11 -Wall -Wextra -Wpedantic .\main_missing_semicolon.c
