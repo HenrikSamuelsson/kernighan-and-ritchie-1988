@@ -60,7 +60,7 @@ Intentionally left out a semicolon to see what error messages this causes when c
       | ^
 ```
 
-### Fault Injection: Missing `main`
+### Fault Injection: Missing Entry Point (`main`)
 
 Replaced `main` with `start` to see if this compiles.
 
@@ -73,14 +73,11 @@ D:/W/B/src/mingw-w64/mingw-w64-crt/crt/crtexewin.c:62:(.text.startup+0xb6): unde
 collect2.exe: error: ld returned 1 exit status
 ```
 
-Replacing `main` with another function name causes the program to compile successfully but fail during linking. This demonstrates that `main` is a required entry point defined by the C execution environment, not merely a naming convention within the source code.
+Replacing `main` with another function name causes the program to compile successfully but fail during the linking stage. This demonstrates that `main` is a required entry point defined by the C execution environment, not merely a naming convention within the source code.
 
 ## Answer
 
-The exercise demonstrates the basic structure of a minimal C program and how
-common syntax and declaration errors are reported by the compiler. It also
-serves as a practical introduction to compiling and running a C program from
-the command line using GCC on Windows.
+The exercise demonstrates the basic structure of a minimal C program and how common syntax and declaration errors are reported by the compiler. It also illustrates the distinct roles of the compiler and linker, and how different classes of errors are detected at different stages of the build process. It also serves as a practical introduction to compiling and running a C program from the command line using GCC on Windows.
 
 ## References
 
