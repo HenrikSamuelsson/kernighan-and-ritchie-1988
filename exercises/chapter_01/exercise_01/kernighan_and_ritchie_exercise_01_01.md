@@ -26,7 +26,7 @@ Hello, world!
 
 ### Missing Semicolon
 
-<https://github.com/HenrikSamuelsson/kernighan-1988/blob/a9001e8f8c7c923d709ad54e61e5bedc08ba540f/exercises/chapter_01/exercise_01/main_missing_semicolon.c#L1-L8>
+<https://github.com/HenrikSamuelsson/kernighan-and-ritchie-1988/blob/d217fa057e18fa36969fdc8c02687803b5231fdb/exercises/chapter_01/exercise_01/main_missing_semicolon.c#L1-L8>
 
 ```powershell
 > gcc -std=c11 -Wall -Wextra -Wpedantic .\main_missing_semicolon.c
