@@ -8,7 +8,7 @@ Experiment to find out what happens when `printf`'s argument string contains `\c
 
 ## Solution
 
-The escape sequences `\n` for new line, `-t` for tab, `\b` for backspace, `\"` for the double quote, and `\\` for the backslash itself are all mentioned in the book right before this exercise. All official escape sequences are listed in the ISO standards. For example in ISO (2011, § 5.2.2) we find additional escape sequences such as `\a` for audible or visible alert, and `\v` for vertical tab, among others. Some compilers, such as GCC, also support `\e`, that is interpreted as the the escape key.
+The escape sequences `\n` for new line, `-t` for tab, `\b` for backspace, `\"` for the double quote, and `\\` for the backslash itself are all mentioned in the book right before this exercise. All official escape sequences are listed in the ISO standards. For example in ISO (2011, § 5.2.2) we find additional escape sequences such as `\a` for audible or visible alert, and `\v` for vertical tab, among others. Some compilers, such as GCC, also support `\e`, \e, interpreted as the ASCII ESC character.
 
 The following program will experiment with some different escape sequences including a test for what happens when including an experiment with a made-up `\z` escape sequence that is neither covered by the ISO (2011) nor a valid compiler extension.
 
@@ -47,7 +47,7 @@ Running the program in a Powershell console on Windows causes the following outp
 Experiment with some `printf` escape sequences showed that in a Windows 11 Command Prompt environment the following will occur:
 
 - `\a` causes an sound effect being played vie the OS audio stack
-- `\v` causes a vertical tab, which manifests as a normal line break, moving the cursor down to the start of the next line.
+- \v causes a vertical tab, which in this environment manifests similarly to a line break, moving the cursor down to the start of the next line.
 - Undefined escape sequences such as `\z` Undefined result in a diagnostic warning at compile time and are interpreted as the escaped character being printed at run time.
 - `\e` will consume the next following character preventing it from being printed
 
