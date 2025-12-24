@@ -29,7 +29,7 @@ This program will compile with warnings:
 
 Running the program in a Powershell console on Windows causes the following output
 
-```powershell
+```console
 > .\a.exe
 1. Alert
 <>
