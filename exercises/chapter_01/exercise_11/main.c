@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define IN 1  /* inside a word */
-#define OUT 0 /* outside a word */
+#define IN 1  /* Inside of a word. */
+#define OUT 0 /* Outside of a word. */
 
 /* Count lines, words, and characters in input. */
 int main(void)
