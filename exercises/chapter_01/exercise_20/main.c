@@ -8,7 +8,7 @@
 #define N 4
 
 int my_getline(char s[], int lim);
-void detab(char source[], char result[], int length);
+void detab(char source[], char result[], int length, int limit);
 
 int main(void)
 {
@@ -18,7 +18,7 @@ int main(void)
 
     while ((len = my_getline(line, MAXLINE)) >= 0)
     {
-        detab(line, no_tab_line, len);
+        detab(line, no_tab_line, len, MAXLINE);
         printf("%s\n", no_tab_line);
     }
 
@@ -86,18 +86,18 @@ int my_getline(char s[], int lim)
     return len;
 }
 
-void detab(char source[], char result[], int length, int result_lim)
+void detab(char source[], char result[], int length, int limit)
 {
     int s_idx = 0;
     int r_idx = 0;
     int n_space;
 
-    if (result_lim <= 0)
+    if (limit <= 0)
     {
         return;
     }
 
-    while ((s_idx < length) && (r_idx < (result_lim - 1)))
+    while ((s_idx < length) && (r_idx < (limit - 1)))
     {
         if ('\t' != source[s_idx])
         {
@@ -106,7 +106,7 @@ void detab(char source[], char result[], int length, int result_lim)
         else
         {
             n_space = N - (r_idx % N);
-            while ((n_space-- > 0) && (r_idx < (result_lim - 1)))
+            while ((n_space-- > 0) && (r_idx < (limit - 1)))
             {
                 result[r_idx++] = ' ';
             }
