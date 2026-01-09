@@ -7,11 +7,10 @@
 /* Number of columns used for tab. */
 #define TAB_WIDTH 4
 
-/* States depending on current input character is a space or not. */
-#define NO_SPACE 0
-#define SPACE 1
-
 int my_getline(char s[], int lim);
+int next_tab_stop(int col);
+void flush_spaces(int *col, int *r_idx, char dst[], int dst_cap,
+                  int pending_spaces);
 void entab(const char src[], char dst[], int src_len, int dst_cap);
 
 int main(void)
@@ -90,37 +89,107 @@ int my_getline(char s[], int lim)
     return len;
 }
 
+int next_tab_stop(int col)
+{
+    return col + (TAB_WIDTH - (col % TAB_WIDTH));
+}
+
+/* Flush pending spaces from current column, emitting minimal
+   tabs/spaces. Updates col and r_idx accordingly. Never writes past
+   dst_cap - 1. */
+void flush_spaces(int *col, int *r_idx, char dst[], int dst_cap,
+                  int pending_spaces)
+{
+    int target = *col + pending_spaces;
+
+    while ((*col < target) && (*r_idx < (dst_cap - 1)))
+    {
+        int next = next_tab_stop(*col);
+
+        /* Emit a tab if it moves us forward and does not overshoot the
+         * target. */
+        if ((next <= target) && (next > *col))
+        {
+            dst[*r_idx] = '\t';
+            (*r_idx)++;
+            *col = next;
+        }
+        else
+        {
+            dst[*r_idx] = ' ';
+            (*r_idx)++;
+            (*col)++;
+        }
+    }
+}
+
 void entab(const char src[], char dst[], int src_len, int dst_cap)
 {
     int s_idx = 0;
     int r_idx = 0;
-    int first_space_idx = 0;
-    int n_space;
-    int state = NO_SPACE;
+    int col = 0;
+    int pending_spaces = 0;
 
-    if (dst_cap <= 0)
+    if ((dst_cap <= 0) || (dst == NULL))
     {
+        return;
+    }
+
+    /* If src is NULL, produce empty string. */
+    if (src == NULL)
+    {
+        dst[0] = '\0';
         return;
     }
 
     while ((s_idx < src_len) && (r_idx < (dst_cap - 1)))
     {
-        if (' ' != src[s_idx])
+        char c = src[s_idx];
+
+        if (c == ' ')
         {
-            state = NO_SPACE;
-            dst[r_idx] = src[s_idx];
-            r_idx++;
+            pending_spaces++;
+            s_idx++;
+            continue;
+        }
+
+        /* We hit a non-space: flush any pending spaces first. */
+        if (pending_spaces > 0)
+        {
+            flush_spaces(&col, &r_idx, dst, dst_cap, pending_spaces);
+            pending_spaces = 0;
+
+            /* If flushing filled the output buffer, stop. */
+            if (r_idx >= (dst_cap - 1))
+            {
+                break;
+            }
+        }
+
+        /* Copy the non-space char and update column. */
+        dst[r_idx] = c;
+        r_idx++;
+
+        if (c == '\n')
+        {
+            col = 0;
+        }
+        else if (c == '\t')
+        {
+            col = next_tab_stop(col);
         }
         else
         {
-            if (NO_SPACE == state)
-            {
-                first_space_idx = r_idx;
-            }
-            state = SPACE;
+            col++;
         }
-        // Another character in the source have been handled.
+
         s_idx++;
+    }
+
+    /* End of input or output full: flush trailing spaces if any. */
+    if ((pending_spaces > 0) && (r_idx < (dst_cap - 1)))
+    {
+        flush_spaces(&col, &r_idx, dst, dst_cap, pending_spaces);
     }
 
     dst[r_idx] = '\0';
